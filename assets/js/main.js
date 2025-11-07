@@ -24,4 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  const contactForm = document.querySelector("#contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      alert("Contato enviado com sucesso! Em breve retornaremos.");
+      contactForm.reset();
+    });
+  }
 });
