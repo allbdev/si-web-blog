@@ -50,12 +50,88 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .logo {
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--secondary-color);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 76, 117, 0.25);
+  background: white;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border 0.2s ease, background 0.2s ease;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus-visible {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+  outline: none;
+}
+
+.menu-toggle .menu-toggle-line {
+  position: relative;
+  width: 22px;
+  height: 2px;
+  background: var(--secondary-color);
+  transition: background 0.2s ease;
+}
+
+.menu-toggle .menu-toggle-line::before,
+.menu-toggle .menu-toggle-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: var(--secondary-color);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-toggle .menu-toggle-line::before {
+  transform: translateY(-6px);
+}
+
+.menu-toggle .menu-toggle-line::after {
+  transform: translateY(6px);
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+body.menu-open .menu-toggle .menu-toggle-line {
+  background: transparent;
+}
+
+body.menu-open .menu-toggle .menu-toggle-line::before {
+  transform: translateY(0) rotate(45deg);
+}
+
+body.menu-open .menu-toggle .menu-toggle-line::after {
+  transform: translateY(0) rotate(-45deg);
 }
 
 nav ul {
@@ -301,13 +377,42 @@ footer .footer-content {
 }
 
 @media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-container {
+    height: var(--header-height);
+  }
+
+  .nav-container nav {
+    position: absolute;
+    top: calc(var(--header-height) - 8px);
+    left: 24px;
+    right: 24px;
+    background: white;
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 18px 36px rgba(15, 76, 117, 0.16);
+    display: none;
+  }
+
+  body.menu-open .nav-container nav {
+    display: block;
+  }
+
   nav ul {
-    gap: 10px;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
   }
 
   nav a {
-    padding: 6px 8px;
-    font-size: 0.95rem;
+    padding: 12px 0;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    display: block;
   }
 
   .hero {
@@ -323,6 +428,6 @@ footer .footer-content {
   }
 
   .experiencias-page .gallery img {
-    height: 240px;
+    height: 320px;
   }
 }

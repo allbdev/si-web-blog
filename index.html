@@ -15,7 +15,16 @@
     <header>
       <div class="nav-container">
         <a class="logo" href="index.html">Viajante Essencial</a>
-        <nav aria-label="Navegação principal">
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Abrir menu</span>
+          <span class="menu-toggle-line"></span>
+        </button>
+        <nav id="primary-navigation" aria-label="Navegação principal">
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="destinos.html">Destinos</a></li>
