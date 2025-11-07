@@ -260,6 +260,10 @@ main {
   object-fit: cover;
 }
 
+.experiencias-page .gallery img {
+  height: 440px;
+}
+
 footer {
   background: #0f1c2f;
   color: rgba(255, 255, 255, 0.82);
@@ -310,5 +314,9 @@ footer .footer-content {
 
   .gallery img {
     height: 200px;
+  }
+
+  .experiencias-page .gallery img {
+    height: 240px;
   }
 }
